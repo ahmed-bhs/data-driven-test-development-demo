@@ -2,8 +2,8 @@
 
 namespace App\EventListener;
 
-use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -20,23 +20,23 @@ class ExceptionListener
 
         if ($exception instanceof BadRequestHttpException) {
             $content = json_encode([
-                'status' => $exception->getStatusCode(),
-                'message' => 'Bad Request'
+                'status'  => $exception->getStatusCode(),
+                'message' => 'Bad Request',
             ]);
         } elseif ($exception instanceof NotFoundHttpException) {
             $content = json_encode([
-                'status' => $exception->getStatusCode(),
-                'message' => 'Not Found'
+                'status'  => $exception->getStatusCode(),
+                'message' => 'Not Found',
             ]);
         } elseif ($exception instanceof UnauthorizedHttpException) {
             $content = json_encode([
-                'status' => $exception->getStatusCode(),
-                'message' => 'Unauthorized'
+                'status'  => $exception->getStatusCode(),
+                'message' => 'Unauthorized',
             ]);
         } else {
             $content = json_encode([
-                'status' => $exception->getStatusCode(),
-                'message' => 'Internal Server Error'
+                'status'  => $exception->getStatusCode(),
+                'message' => 'Internal Server Error',
             ]);
             $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         }

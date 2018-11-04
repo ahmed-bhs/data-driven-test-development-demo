@@ -14,7 +14,7 @@ class HttpStatus404Test extends WebTestCase
     {
         $user = [
             'username' => $username,
-            'password' => $password
+            'password' => $password,
         ];
 
         $client = static::createClient();
@@ -34,11 +34,11 @@ class HttpStatus404Test extends WebTestCase
     public function data()
     {
         $data = [];
-        $users = json_decode(file_get_contents(__DIR__ . '/data/http_status_404.json'))->httpBody;
+        $users = json_decode(file_get_contents(__DIR__.'/data/http_status_404.json'))->httpBody;
         foreach ($users as $user) {
             $data[] = [
                 $user->username,
-                $user->password
+                $user->password,
             ];
         }
 

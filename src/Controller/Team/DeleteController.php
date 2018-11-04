@@ -15,14 +15,14 @@ class DeleteController extends Controller implements TokenAuthenticatedControlle
     public function index(Request $request)
     {
         if (!filter_var($request->get('id'), FILTER_VALIDATE_INT)) {
-            throw new BadRequestHttpException;
+            throw new BadRequestHttpException();
         }
 
         $em = $this->getDoctrine()->getManager();
         $team = $em->getRepository(Team::class)->find($request->get('id'));
 
         if (!$team) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
 
         $em->remove($team);
@@ -30,8 +30,8 @@ class DeleteController extends Controller implements TokenAuthenticatedControlle
 
         return new Response(
             json_encode([
-                'status' => Response::HTTP_OK,
-                'message' => 'Team successfully deleted'
+                'status'  => Response::HTTP_OK,
+                'message' => 'Team successfully deleted',
             ]),
             Response::HTTP_OK,
             ['content-type' => 'application/json']

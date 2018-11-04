@@ -6,8 +6,8 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class DatabaseBootstrapCommand extends ContainerAwareCommand
 {
@@ -31,11 +31,11 @@ class DatabaseBootstrapCommand extends ContainerAwareCommand
 
         $em = $this->getContainer()->get('doctrine')->getEntityManager();
 
-        $alice = new User;
+        $alice = new User();
         $alice->setUsername('alice');
         $alice->setPassword('password');
 
-        $bob = new User;
+        $bob = new User();
         $bob->setUsername('bob');
         $bob->setPassword('password');
 

@@ -13,10 +13,10 @@ class HttpStatus200Test extends TokenAuthenticatedWebTestCase
     public function http_status_200($name, $location, $stadium, $season)
     {
         $team = [
-            'name' => $name,
+            'name'     => $name,
             'location' => $location,
-            'stadium' => $stadium,
-            'season' => $season,
+            'stadium'  => $stadium,
+            'season'   => $season,
         ];
 
         $client = static::createClient();
@@ -28,7 +28,7 @@ class HttpStatus200Test extends TokenAuthenticatedWebTestCase
             [],
             [
                 'HTTP_AUTHORIZATION' => 'Bearer '.self::$accessToken,
-                'CONTENT_TYPE' => 'application/json',
+                'CONTENT_TYPE'       => 'application/json',
             ],
             json_encode($team)
         );
