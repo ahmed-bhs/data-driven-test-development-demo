@@ -21,7 +21,7 @@ class HttpStatus200Test extends TokenAuthenticatedWebTestCase
             [],
             [
                 'HTTP_AUTHORIZATION' => 'Bearer '.self::$accessToken,
-                'CONTENT_TYPE' => 'application/json',
+                'CONTENT_TYPE'       => 'application/json',
             ]
         );
 
@@ -31,10 +31,10 @@ class HttpStatus200Test extends TokenAuthenticatedWebTestCase
     public function data()
     {
         $data = [];
-        $queryStrings = json_decode(file_get_contents(__DIR__ . '/data/http_status_200.json'))->queryString;
+        $queryStrings = json_decode(file_get_contents(__DIR__.'/data/http_status_200.json'))->queryString;
         foreach ($queryStrings as $queryString) {
             $data[] = [
-                $queryString->id
+                $queryString->id,
             ];
         }
 

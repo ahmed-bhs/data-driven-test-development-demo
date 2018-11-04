@@ -5,8 +5,8 @@ namespace App\Controller;
 use App\Entity\User;
 use Firebase\JWT\JWT;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AuthController extends AbstractController
@@ -19,22 +19,22 @@ class AuthController extends AbstractController
 
         $user = $em->getRepository(User::class)->findOneBy([
             'username' => $data->username,
-            'password' => $data->password
+            'password' => $data->password,
         ]);
 
         if (!$user) {
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
         }
 
         $token = [
-            "id" => $user->getId(),
-            "exp" => time() + (60 * 60)
+            'id'  => $user->getId(),
+            'exp' => time() + (60 * 60),
         ];
 
         return new Response(
             json_encode([
-                'status' => Response::HTTP_OK,
-                'access_token' => JWT::encode($token, getenv('JWT_SECRET'))
+                'status'       => Response::HTTP_OK,
+                'access_token' => JWT::encode($token, getenv('JWT_SECRET')),
             ]),
             Response::HTTP_OK,
             ['content-type' => 'application/json']

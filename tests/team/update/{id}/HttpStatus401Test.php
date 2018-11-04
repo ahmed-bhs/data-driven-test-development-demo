@@ -58,7 +58,7 @@ class HttpStatus401Test extends TokenAuthenticatedWebTestCase
         }
 
         $httpBodies = json_decode(file_get_contents(__DIR__.'/data/http_status_200.json'))->httpBody;
-        for ($i = 0; $i < count($data); ++$i) {
+        for ($i = 0; $i < count($data); $i++) {
             array_push(
                 $data[$i],
                 ...array_values((array) $httpBodies[$i])

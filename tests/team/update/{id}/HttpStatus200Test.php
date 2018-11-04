@@ -34,7 +34,7 @@ class HttpStatus200Test extends TokenAuthenticatedWebTestCase
             [],
             [
                 'HTTP_AUTHORIZATION' => 'Bearer '.self::$accessToken,
-                'CONTENT_TYPE' => 'application/json',
+                'CONTENT_TYPE'       => 'application/json',
             ],
             json_encode($team)
         );
@@ -54,7 +54,7 @@ class HttpStatus200Test extends TokenAuthenticatedWebTestCase
         }
 
         $httpBodies = json_decode(file_get_contents(__DIR__.'/data/http_status_200.json'))->httpBody;
-        for ($i = 0; $i < count($data); ++$i) {
+        for ($i = 0; $i < count($data); $i++) {
             array_push(
                 $data[$i],
                 ...array_values((array) $httpBodies[$i])
